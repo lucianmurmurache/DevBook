@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://lucian123:SpYs6TP0oeSuBLP8@devbook-lg5zv.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "jeffreyepsteindidntkillhimself"
+    "mongoURI": "mongodb+srv://lucian123:yUVhxdmcPNr29Bcg@devbook-lg5zv.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "EdwardSnowdenIsAHeroAndThatsAFact"
 }
