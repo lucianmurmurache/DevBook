@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://lucian123:yUVhxdmcPNr29Bcg@devbook-lg5zv.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "EdwardSnowdenIsAHeroAndThatsAFact"
+    "jwtSecret": "EdwardSnowdenIsAHeroAndThatsAFact",
+    "githubClientId": "5c3a32cc64d5dd8f2928",
+    "githubSecret": "929f3f3403ac7d80d5caecacef3bcb50882d6559"
 }
