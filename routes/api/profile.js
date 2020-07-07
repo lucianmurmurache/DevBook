@@ -6,6 +6,7 @@ const axios = require('axios');
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 const { check, validationResult } = require('express-validator');
 
@@ -100,7 +101,7 @@ router.post('/', [
         profile = new Profile(profileFields);
         await profile.save();
         res.json(profile);
-    } catch {
+    } catch (err) {
         console.error(err.message);
         return res.status(500).json({ msg: 'Server Error' });
     }
@@ -150,7 +151,7 @@ router.get('/user/:user_id', async (req, res) => {
 router.delete('/', auth, async (req, res) => {
     try {
         // Remove user's posts
-        /*=====@ToDO=====*/
+        await Post.deleteMany({ user: req.user.id });
         // Remove profile
         await Profile.findOneAndRemove({ user: req.user.id });
         // Remove user
