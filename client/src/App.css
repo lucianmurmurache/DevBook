@@ -1,10 +1,10 @@
 /* ===== Global Styles ===== */
 :root {
-  --primary-color: #577399;
-  --dark-color: #495867;
+  --primary-color: #05668D;
+  --dark-color: #012f41;
   --light-color: #F7F7FF;
   --danger-color: #FE5F55;
-  --success-color: #00ff00;
+  --success-color: #02C39A;
 }
 
 * {
@@ -129,7 +129,7 @@ img {
 .btn {
   display: inline-block;
   background: var(--light-color);
-  border-radius: 0.3rem;
+  border-radius: 0.3125rem;
   box-shadow: 0rem 0.1rem 0.2rem rgba(51, 51, 51, 0.4);
   color: #333;
   padding: 0.4rem 1.3rem;
@@ -151,17 +151,20 @@ img {
 }
 
 .alert {
-  padding: 0.8rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background: var(--light-color);
-  color: #333;
+  background-color: #fff;
+	border-radius: 0.3125rem;
+	box-shadow: 0rem 0.1875rem 60.375rem rgb(0, 0, 0, 0.2), 0rem 0.1875rem 0.375rem rgb(0, 0, 0, 0.3);
+	color: #fff;
+	font-size: 0.875rem;
+	padding: 0.9375rem 1.25rem;
+	line-height: 1.25rem;
+	margin-bottom: 0.9375rem;
+	animation: grow 0.5s ease-in forwards;
 }
 
 .btn-primary,
 .bg-primary,
-.badge-primary,
-.alert-primary {
+.badge-primary {
   background: var(--primary-color);
   color: #fff;
 }
@@ -184,16 +187,14 @@ img {
 
 .btn-danger,
 .bg-danger,
-.badge-danger,
-.alert-danger {
+.badge-danger {
   background: var(--danger-color);
   color: #fff;
 }
 
 .btn-success,
 .bg-success,
-.badge-success,
-.alert-success {
+.badge-success {
   background: var(--success-color);
   color: #fff;
 }
@@ -227,6 +228,20 @@ img {
   margin: 1.5rem 0;
 }
 
+/* ===== Alert colours ===== */
+.alert-primary {
+  background-color: #00cae3;
+}
+
+.alert-success {
+  background-color: #55b559;
+}
+
+.alert-danger {
+  background-color: #f55145;
+}
+
+
 /* ===== Overlay ===== */
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
@@ -258,9 +273,9 @@ img {
   width: 100%;
   padding: 0.4rem;
   font-size: 1.2rem;
-  border: 0.0625rem solid #577399;
+  border: 0.0625rem solid var(--primary-color);
   box-shadow: 0rem 0.2rem 0.3rem rgba(87, 115, 153, 0.3);
-  border-radius: 0.3rem;
+  border-radius: 0.3125rem;
 }
 
 .form input[type='submit'],
@@ -314,6 +329,7 @@ button {
   width: 100%;
   top: 0;
   border-bottom: solid 0.0625rem var(--primary-color);
+  box-shadow: 0rem 0rem 0.6rem rgba(5, 102, 141, 0.6);
   opacity: 0.9;
 }
 
@@ -363,6 +379,9 @@ button {
   padding: 1rem;
   line-height: 1.8;
   margin-bottom: 1rem;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0rem 0rem 0.3rem rgba(5, 102, 141, 0.3);
 }
 
 /* ===== Profile Page ===== */
@@ -383,6 +402,8 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+  border-radius: 0.3125rem;
+  box-shadow: 0rem 0rem 0.3rem rgba(5, 102, 141, 0.3);
 }
 
 .profile-top img {
@@ -401,6 +422,9 @@ button {
 .profile-about {
   grid-area: about;
   text-align: center;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0rem 0rem 0.3rem rgba(5, 102, 141, 0.3);
 }
 
 .profile-about .skills {
@@ -412,10 +436,16 @@ button {
 
 .profile-exp {
   grid-area: exp;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0rem 0rem 0.3rem rgba(5, 102, 141, 0.3);
 }
 
 .profile-edu {
   grid-area: edu;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0rem 0rem 0.3rem rgba(5, 102, 141, 0.3);
 }
 
 .profile-exp h2,
