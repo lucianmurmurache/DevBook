@@ -147,6 +147,8 @@ img {
   text-align: center;
   margin: 0.3rem;
   background: var(--light-color);
+  border-radius: 0.3125rem;
+  box-shadow: 0rem 0.1rem 0.2rem rgba(51, 51, 51, 0.2);
   color: #333;
 }
 
@@ -476,6 +478,9 @@ button {
 
 .profile-github .repo {
   display: flex;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0rem 0rem 0.3rem rgba(5, 102, 141, 0.3);
 }
 
 .profile-github .repo > div:first-child {
