@@ -504,6 +504,9 @@ button {
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
   align-items: center;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0rem 0rem 0.3rem rgba(5, 102, 141, 0.3);
 }
 
 .post > div:first-child {
