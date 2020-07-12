@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const normalize = require('normalize-url');
-
 const User = require('../../models/User');
+
 /**
  * @route   POST api/users
  * @desc    Register user
@@ -22,17 +22,13 @@ router.post('/', [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
     const { name, email, password } = req.body;
-
     try {
         // See if user exists
         let user = await User.findOne({ email });
-
         if (user) {
             return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
         }
-
         // Get users gravatar
         const avatar = normalize(
             gravatar.url(email, {
@@ -42,7 +38,6 @@ router.post('/', [
             }),
             { forceHttps: true }
         );
-
         // Create user
         user = new User({
             name,
@@ -50,14 +45,11 @@ router.post('/', [
             avatar,
             password
         });
-
         // Encrypt password
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
-
         // Save user in db
         await user.save();
-
         const payload = {
             user: {
                 id: user.id
