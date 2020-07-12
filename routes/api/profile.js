@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const config = require('config');
 const axios = require('axios');
-
+const normalize = require('normalize-url');
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -63,49 +63,37 @@ router.post('/', [
         linkedin
     } = req.body;
 
-    // Build profile object                 ========================== refactor
-    const profileFields = {};
+    // Build profile object
+    const profileFields = {
+        user: req.user.id,
+        company,
+        location,
+        website: website && website !== '' ? normalize(website, { forceHttps: true }) : '',
+        bio,
+        skills: Array.isArray(skills) ? skills : skills.split(',').map((skill) => ' ' + skill.trim()),
+        status,
+        githubusername
+    };
 
-    profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
-    if (location) profileFields.location = location;
-    if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-        profileFields.skills = skills.split(',').map(skill => skill.trim());
+    // Build social object
+    const socialfields = { youtube, twitter, instagram, linkedin, facebook };
+    for (const [key, value] of Object.entries(socialfields)) {
+        if (value && value.length > 0)
+            socialfields[key] = normalize(value, { forceHttps: true });
     }
-
-    // Build social object                  ========================== refactor
-    profileFields.social = {};
-    if (youtube) profileFields.social.youtube = youtube;
-    if (facebook) profileFields.social.facebook = facebook;
-    if (twitter) profileFields.social.twitter = twitter;
-    if (instagram) profileFields.social.instagram = instagram;
-    if (linkedin) profileFields.social.linkedin = linkedin;
-
+    profileFields.social = socialfields;
     try {
-        let profile = await Profile.findOne({ user: req.user.id });
-
-        if (profile) {
-            // Update
-            profile = await Profile.findOneAndUpdate(
-                { user: req.user.id },
-                { $set: profileFields },
-                { new: true }
-            );
-            res.json(profile);
-        }
-        // Create                       ========================== refactor
-        profile = new Profile(profileFields);
-        await profile.save();
+        // Upsert option creates new doc if no match is found
+        let profile = await Profile.findOneAndUpdate(
+            { user: req.user.id },
+            { $set: profileFields },
+            { new: true, upsert: true }
+        );
         res.json(profile);
     } catch (err) {
         console.error(err.message);
-        return res.status(500).json({ msg: 'Server Error' });
+        res.status(500).send('Server Error');
     }
-
 });
 
 /**  
@@ -131,7 +119,6 @@ router.get('/', async (req, res) => {
 router.get('/user/:user_id', async (req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name', 'avatar']);
-
         if (!profile) return res.status(400).json({ msg: 'Profile not found' });
         return res.status(200).json(profile);
     } catch (err) {
@@ -156,7 +143,6 @@ router.delete('/', auth, async (req, res) => {
         await Profile.findOneAndRemove({ user: req.user.id });
         // Remove user
         await User.findOneAndRemove({ _id: req.user.id });
-
         return res.status(200).json({ msg: 'User has been removed' });
     } catch (err) {
         console.error(err.message);
@@ -178,7 +164,6 @@ router.put('/experience', [auth, [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
     const {
         title,
         company,
@@ -188,7 +173,6 @@ router.put('/experience', [auth, [
         current,
         description
     } = req.body;
-
     const newExp = {
         title,
         company,
@@ -198,7 +182,6 @@ router.put('/experience', [auth, [
         current,
         description
     }
-
     try {
         const profile = await Profile.findOne({ user: req.user.id });
         profile.experience.unshift(newExp); // Used unshift to push to beginning.
@@ -244,7 +227,6 @@ router.put('/education', [auth, [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
     const {
         school,
         degree,
@@ -253,7 +235,6 @@ router.put('/education', [auth, [
         to,
         description
     } = req.body;
-
     const newEdu = {
         school,
         degree,
@@ -262,7 +243,6 @@ router.put('/education', [auth, [
         to,
         description
     }
-
     try {
         const profile = await Profile.findOne({ user: req.user.id });
         profile.education.unshift(newEdu); // Used unshift to push to beginning.
@@ -307,7 +287,6 @@ router.get('/github/:username', async (req, res) => {
             'user-agent': 'node.js',
             Authorization: `token ${config.get('githubToken')}`
         };
-
         const gitHubResponse = await axios.get(uri, { headers });
         return res.json(gitHubResponse.data);
     } catch (err) {
