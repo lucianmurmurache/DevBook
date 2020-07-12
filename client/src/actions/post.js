@@ -4,7 +4,8 @@ import {
     POST_ERROR,
     UPDATE_LIKES,
     DELETE_POST,
-    ADD_POST
+    ADD_POST,
+    GET_POST
 } from './types';
 import { setAlert } from './alert';
 
@@ -87,6 +88,22 @@ export const deletePost = id => async dispatch => {
             payload: id
         });
         dispatch(setAlert('Post removed', 'success'));
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+// Get post (Discussion)
+export const getPost = id => async dispatch => {
+    try {
+        const res = await axios.get(`/api/posts/${id}`);
+        dispatch({
+            type: GET_POST,
+            payload: res.data
+        });
     } catch (err) {
         dispatch({
             type: POST_ERROR,
