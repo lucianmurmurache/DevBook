@@ -11,8 +11,8 @@ const User = require('../../models/User');
 
 /** 
  * @route   GET api/auth
- * @desc    Test route
- * @access  Public
+ * @desc    Get user by token
+ * @access  Private
  */
 router.get('/', auth, async (req, res) => {
     try {
@@ -37,9 +37,7 @@ router.post('/', [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
     const { email, password } = req.body;
-
     try {
         // See if user exists
         let user = await User.findOne({ email });
