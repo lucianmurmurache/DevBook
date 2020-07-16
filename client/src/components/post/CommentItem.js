@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -30,7 +30,7 @@ const CommentItem = ({
                         className='btn btn-danger'
                         onClick={() => deleteComment(postId, _id)}
                     >
-                        <i className='fas fa-trash' />
+                        <i className='fas fa-trash' aria-hidden='true' />
                     </button>
                 )}
             </div>

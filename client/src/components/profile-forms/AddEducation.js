@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
 
-
 const AddEducation = ({ addEducation, history }) => {
     const [formData, setFormData] = useState({
         school: '',
@@ -16,14 +15,13 @@ const AddEducation = ({ addEducation, history }) => {
         description: ''
     });
     const { school, degree, fieldofstudy, from, to, current, description } = formData;
-
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     return (
         <Fragment>
             <h1 className='large text-primary'>Add Education</h1>
             <p className='lead'>
-                <i className='fas fa-code-branch' />
+                <i className='fas fa-code-branch' aria-hidden='true' />
                 Add a school or bootcamp that you've attended
             </p>
             <small>* = required field</small>

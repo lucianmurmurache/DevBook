@@ -20,7 +20,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             </li>
             <li>
                 <Link to='/dashboard'>
-                    <i className='fas fa-user' />{' '}
+                    <i className='fas fa-user' aria-hidden='true' />{' '}
                     <span className='hide-sm'>
                         Dashboard
                     </span>
@@ -28,7 +28,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             </li>
             <li>
                 <Link onClick={logout} to='/'>
-                    <i className='fas fa-sign-out-alt' />{' '}
+                    <i className='fas fa-sign-out-alt' aria-hidden='true' />{' '}
                     <span className='hide-sm'>
                         Logout
                     </span>
@@ -58,10 +58,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     return (
         <nav className='navbar bg-dark'>
             <h1>
-                <Link to='/'><i className='fas fa-sitemap' /> DevBook</Link>
+                <Link to='/'><i className='fas fa-sitemap' aria-hidden='true' /> DevBook</Link>
             </h1>
             {!loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
-
         </nav>
     );
 };
@@ -69,7 +68,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 Navbar.propTypes = {
     logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-}
+};
 
 const mapStateToProps = state => ({
     auth: state.auth

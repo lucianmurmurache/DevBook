@@ -5,8 +5,6 @@ import Moment from 'react-moment';
 import moment from 'moment';
 import { deleteEducation } from '../../actions/profile';
 
-
-
 const Education = ({ education, deleteEducation }) => {
 
     const educations = education.map(edu => (

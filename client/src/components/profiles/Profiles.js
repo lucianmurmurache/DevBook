@@ -5,7 +5,6 @@ import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
-
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     useEffect(() => {
         getProfiles();
@@ -16,7 +15,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                 <Fragment>
                     <h1 className='large text primary'>Developers</h1>
                     <p className='lead'>
-                        <i className='fab fa-connectdevelop' />
+                        <i className='fa fa-connectdevelop' aria-hidden='true' />{' '}
                         Connect with other developers
                         </p>
                     <div className='profiles'>
@@ -28,7 +27,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                             ) : <h4> No profiles found!</h4>
                         }
                     </div>
-
                 </Fragment>
             )}
         </Fragment>

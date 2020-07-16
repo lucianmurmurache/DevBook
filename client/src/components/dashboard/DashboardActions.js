@@ -5,19 +5,19 @@ const DashboardActions = () => {
     return (
         <div className='dash-buttons'>
             <Link to='/edit-profile' className='btn btn-light'>
-                <i className='fas fa-user-circle text-primary' />{' '}
+                <i className='fas fa-user-circle text-primary' aria-hidden='true' />{' '}
                 Edit Profile
             </Link>
             <Link to='/add-experience' className='btn btn-light'>
-                <i className='fab fa-black-tie text-primary' />{' '}
+                <i className='fab fa-black-tie text-primary' aria-hidden='true' />{' '}
                 Add Experience
             </Link>
             <Link to='/add-education' className='btn btn-light'>
-                <i className='fas fa-graduation-cap text-primary' />{' '}
+                <i className='fas fa-graduation-cap text-primary' aria-hidden='true' />{' '}
                 Add Education
             </Link>
         </div>
     )
-}
+};
 
 export default DashboardActions;

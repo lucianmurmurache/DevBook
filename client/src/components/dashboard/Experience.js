@@ -5,8 +5,6 @@ import { deleteExperience } from '../../actions/profile';
 import Moment from 'react-moment';
 import moment from 'moment';
 
-
-
 const Experience = ({ experience, deleteExperience }) => {
 
     const experiences = experience.map(exp => (
@@ -51,11 +49,11 @@ const Experience = ({ experience, deleteExperience }) => {
             </table>
         </Fragment>
     )
-}
+};
 
 Experience.propTypes = {
     experience: PropTypes.array.isRequired,
     deleteExperience: PropTypes.func.isRequired,
-}
+};
 
 export default connect(null, { deleteExperience })(Experience);

@@ -9,18 +9,14 @@ const Login = ({ login, isAuthenticated }) => {
         email: '',
         password: ''
     });
-
     const { email, password } = formData;
-
     const onChange = e => setFormData({
         ...formData, [e.target.name]: e.target.value
     });
-
     const onSubmit = async e => {
         e.preventDefault();
         login(email, password);
     };
-
     if (isAuthenticated) {
         return <Redirect to='/dashboard' />
     }
@@ -28,16 +24,16 @@ const Login = ({ login, isAuthenticated }) => {
     return (
         <Fragment>
             <h1 className='large text-primary'>Sign In</h1>
-            <p className='lead'><i className='fas fa-user'></i> Sign Into Your Account</p>
+            <p className='lead'><i className='fas fa-user' aria-hidden='true' /> Sign Into Your Account</p>
             <form className='form' onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
                     <input
                         type='email'
-                        placeholder='Email Address'
+                        placeholder='Email address'
                         name='email'
                         value={email}
                         onChange={e => onChange(e)}
-                        required
+                        autoComplete='on'
                     />
                 </div>
                 <div className='form-group'>
@@ -49,7 +45,6 @@ const Login = ({ login, isAuthenticated }) => {
                         onChange={e => onChange(e)}
                         autoComplete='off'
                         minLength='10'
-                        required
                     />
                 </div>
                 <input

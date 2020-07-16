@@ -24,7 +24,7 @@ const Dashboard = ({
                 Dashboard
             </h1>
             <p className='lead'>
-                <i className='fas fa-user' />{' '}
+                <i className='fas fa-user' aria-hidden='true' />{' '}
                 Welcome {user && user.name}
             </p>
             {profile !== null ? (
@@ -34,7 +34,7 @@ const Dashboard = ({
                     <Education education={profile.education} />
                     <div className='my-2'>
                         <button className='btn btn-danger' onClick={() => deleteAccount()}>
-                            <i className="fas fa-user-minus">{' '}Delete Account</i>
+                            <i className='fas fa-user-minus' aria-hidden='true'>{' '}Delete Account</i>
                         </button>
                     </div>
                 </Fragment>

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
-
 const initialState = {
     company: '',
     website: '',
@@ -77,7 +76,7 @@ const ProfileForm = ({
                 Edit Your Profile
             </h1>
             <p className='lead'>
-                <i className='fas fa-user' />{' '}
+                <i className='fas fa-user' aria-hidden='true' />{' '}
                 Make changes to your profile
             </p>
             <small>* = required field</small>
@@ -174,7 +173,6 @@ const ProfileForm = ({
                         Don't try too hard
                     </small>
                 </div>
-
                 <div className='my-2'>
                     <button
                         onClick={() => toggleSocialInputs(!displaySocialInputs)}
@@ -187,7 +185,7 @@ const ProfileForm = ({
                 {displaySocialInputs && (
                     <Fragment>
                         <div className='form-group social-input'>
-                            <i className='fab fa-twitter fa-2x' />
+                            <i className='fab fa-twitter fa-2x' aria-hidden='true' />
                             <input
                                 type='text'
                                 placeholder='Twitter URL'
@@ -196,9 +194,8 @@ const ProfileForm = ({
                                 onChange={onChange}
                             />
                         </div>
-
                         <div className='form-group social-input'>
-                            <i className='fab fa-facebook fa-2x' />
+                            <i className='fab fa-facebook fa-2x' aria-hidden='true' />
                             <input
                                 type='text'
                                 placeholder='Facebook URL'
@@ -207,9 +204,8 @@ const ProfileForm = ({
                                 onChange={onChange}
                             />
                         </div>
-
                         <div className='form-group social-input'>
-                            <i className='fab fa-youtube fa-2x' />
+                            <i className='fab fa-youtube fa-2x' aria-hidden='true' />
                             <input
                                 type='text'
                                 placeholder='YouTube URL'
@@ -218,9 +214,8 @@ const ProfileForm = ({
                                 onChange={onChange}
                             />
                         </div>
-
                         <div className='form-group social-input'>
-                            <i className='fab fa-linkedin fa-2x' />
+                            <i className='fab fa-linkedin fa-2x' aria-hidden='true' />
                             <input
                                 type='text'
                                 placeholder='Linkedin URL'
@@ -241,7 +236,7 @@ const ProfileForm = ({
             </form>
         </Fragment>
     )
-}
+};
 
 ProfileForm.propTypes = {
     createProfile: PropTypes.func.isRequired,

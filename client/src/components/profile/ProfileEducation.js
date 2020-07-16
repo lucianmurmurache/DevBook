@@ -14,10 +14,10 @@ const ProfileEducation = ({
     }
 }) => (
         <div>
-            <h3 className="text-dark">{school}</h3>
+            <h3 className='text-dark'>{school}</h3>
             <p>
-                <Moment format="DD/MM/YYYY">{moment.utc(from)}</Moment> -{' '}
-                {!to ? ' Present' : <Moment format="DD/MM/YYYY">{moment.utc(to)}</Moment>}
+                <Moment format='DD/MM/YYYY'>{moment.utc(from)}</Moment> -{' '}
+                {!to ? ' Present' : <Moment format='DD/MM/YYYY'>{moment.utc(to)}</Moment>}
             </p>
             <p>
                 <strong>Degree/Certificate: </strong> {degree}

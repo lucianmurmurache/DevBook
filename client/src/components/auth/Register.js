@@ -5,7 +5,6 @@ import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-
 const Register = ({ setAlert, register, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -13,13 +12,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         password: '',
         password2: ''
     });
-
     const { name, email, password, password2 } = formData;
-
     const onChange = e => setFormData({
         ...formData, [e.target.name]: e.target.value
     });
-
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== password2) {
@@ -28,7 +24,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             register({ name, email, password });
         }
     };
-
     if (isAuthenticated) {
         return <Redirect to='/dashboard' />
     }
@@ -36,7 +31,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     return (
         <Fragment>
             <h1 className='large text-primary'>Sign Up</h1>
-            <p className='lead'><i className='fas fa-user'></i> Create Your Account</p>
+            <p className='lead'><i className='fas fa-user' aria-hidden='true' /> Create Your Account</p>
             <form className='form' onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
                     <input
@@ -45,17 +40,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         name='name'
                         value={name}
                         onChange={e => onChange(e)}
-                    //required
                     />
                 </div>
                 <div className='form-group'>
                     <input
                         type='email'
-                        placeholder='Email Address'
+                        placeholder='Email address'
                         name='email'
                         value={email}
                         onChange={e => onChange(e)}
-                    //required
                     />
                     <small className='form-text'>
                         This site uses Gravatar, to get a profile image, use a Gravatar email address.
@@ -69,20 +62,16 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         value={password}
                         onChange={e => onChange(e)}
                         autoComplete='off'
-                    //minLength='10'
-                    //required
                     />
                 </div>
                 <div className='form-group'>
                     <input
                         type='password'
-                        placeholder='Confirm Password'
+                        placeholder='Confirm password'
                         name='password2'
                         value={password2}
                         onChange={e => onChange(e)}
                         autoComplete='off'
-                    //minLength='10'
-                    //required
                     />
                 </div>
                 <input

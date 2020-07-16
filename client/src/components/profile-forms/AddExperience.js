@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
 
-
 const AddExperience = ({ addExperience, history }) => {
     const [formData, setFormData] = useState({
         company: '',
@@ -16,14 +15,13 @@ const AddExperience = ({ addExperience, history }) => {
         description: ''
     });
     const { company, title, location, from, to, current, description } = formData;
-
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     return (
         <Fragment>
             <h1 className='large text-primary'>Add An Experience</h1>
             <p className='lead'>
-                <i className='fas fa-code-branch' />
+                <i className='fas fa-code-branch' aria-hidden='true' />
                 Add one or more developer/programming position(s) that you have had
             </p>
             <small>* = required field</small>
@@ -41,7 +39,6 @@ const AddExperience = ({ addExperience, history }) => {
                         name='title'
                         value={title}
                         onChange={onChange}
-                        required
                     />
                 </div>
                 <div className='form-group'>
@@ -51,7 +48,6 @@ const AddExperience = ({ addExperience, history }) => {
                         name='company'
                         value={company}
                         onChange={onChange}
-                        required
                     />
                 </div>
                 <div className='form-group'>

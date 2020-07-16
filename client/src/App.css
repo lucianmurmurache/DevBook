@@ -137,8 +137,8 @@ img {
   border: none;
   cursor: pointer;
   margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
   outline: none;
+  transition: ease 0.4s;
 }
 
 .badge {
@@ -343,6 +343,7 @@ button {
   color: #fff;
   padding: 0.45rem;
   margin: 0 0.25rem;
+  transition: ease 0.4s;
 }
 
 .navbar a:hover {
@@ -415,6 +416,7 @@ button {
 .profile-top .icons a {
   color: #fff;
   margin: 0 0.3rem;
+  transition: ease 0.4s;
 }
 
 .profile-top .icons a:hover {
