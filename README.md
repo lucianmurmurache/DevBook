@@ -55,5 +55,10 @@ npm run dev
 ### Images
 
 <img src="devbook-1.png" alt="Login Screenshot" width="1897px">
-<img src="devbook-1.png" alt="Login Screenshot" width="1897px">
-<img src="devbook-1.png" alt="Login Screenshot" width="1897px">
+> Landing page
+
+<img src="devbook-2.png" alt="Posts Screenshot" width="1897px">
+> Posts page
+
+<img src="devbook-3.png" alt="Developers Screenshot" width="1897px">
+> Developers page
