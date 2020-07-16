@@ -21,6 +21,18 @@ body {
   color: #333;
 }
 
+body::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--dark-color);
+}
+
 a {
   color: var(--primary-color);
   text-decoration: none;
